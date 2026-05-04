@@ -1,0 +1,349 @@
+/* ============================================================
+   medecin.css — Pages Médecin (thème bleu)
+   Auth + Dashboard
+   ============================================================ */
+
+/* ── Auth body ───────────────────────────────────────────── */
+.med-auth-body {
+  min-height: 100vh;
+  background: var(--white);
+  display: flex; align-items: stretch;
+}
+
+.med-auth-wrapper { display: flex; width: 100%; min-height: 100vh; }
+
+/* ── Panneau gauche BLEU ─────────────────────────────────── */
+.med-brand {
+  width: 44%; min-width: 340px;
+  background: linear-gradient(155deg, var(--blue-dark) 0%, var(--blue) 60%, var(--blue-mid) 100%);
+  display: flex; align-items: stretch;
+  position: relative; overflow: hidden;
+}
+
+.med-brand::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 4px;
+  background: linear-gradient(90deg, #60a5fa, #3b82f6, #1d4ed8);
+}
+
+.med-brand-inner {
+  padding: 56px 52px;
+  display: flex; flex-direction: column;
+  gap: 0; width: 100%; position: relative; z-index: 2;
+}
+
+.med-logo {
+  display: flex; align-items: center;
+  gap: 13px; margin-bottom: 72px;
+}
+.med-logo-icon {
+  width: 46px; height: 46px;
+  background: rgba(255,255,255,.18);
+  border: 1.5px solid rgba(255,255,255,.30);
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.15rem; color: var(--white);
+  backdrop-filter: blur(8px);
+}
+.med-logo-name {
+  font-family: var(--font-display);
+  font-size: 1.6rem; font-weight: 700;
+  color: var(--white); letter-spacing: -.015em;
+}
+
+.med-brand-title {
+  font-family: var(--font-display);
+  font-size: 2.9rem; font-weight: 700;
+  line-height: 1.15; color: var(--white);
+  margin-bottom: 18px; letter-spacing: -.025em;
+}
+.med-brand-title em { font-style: italic; color: rgba(255,255,255,.75); }
+
+.med-brand-sub {
+  font-size: .95rem; color: rgba(255,255,255,.72);
+  line-height: 1.75; max-width: 320px;
+}
+
+.med-brand-body { margin-bottom: 44px; }
+
+.med-features {
+  list-style: none;
+  display: flex; flex-direction: column; gap: 14px; margin-bottom: auto;
+}
+.med-features li {
+  display: flex; align-items: center; gap: 12px;
+  font-size: .875rem; color: rgba(255,255,255,.82); line-height: 1.4;
+}
+.med-features li i { color: rgba(255,255,255,.95); font-size: .85rem; flex-shrink: 0; }
+
+/* Décorations */
+.med-brand-deco { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.med-deco-ring {
+  position: absolute; border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,.10);
+}
+.med-deco-ring-1 { width: 340px; height: 340px; bottom: -80px; right: -80px; }
+.med-deco-ring-2 { width: 200px; height: 200px; bottom: -10px; right: -10px; }
+.med-deco-dot { position: absolute; border-radius: 50%; background: rgba(255,255,255,.12); }
+.med-deco-dot-1 { width: 14px; height: 14px; top: 22%; left: 12%; }
+.med-deco-dot-2 { width:  8px; height:  8px; top: 40%; left:  8%; }
+
+/* ── Panneau droit formulaire ────────────────────────────── */
+.med-form-panel {
+  flex: 1; display: flex; align-items: center; justify-content: center;
+  padding: 48px 32px; background: var(--white); overflow-y: auto;
+}
+.med-form-inner { width: 100%; max-width: 500px; }
+
+.med-form-header { margin-bottom: 32px; }
+
+.med-title {
+  font-family: var(--font-display);
+  font-size: 2.1rem; font-weight: 700;
+  color: var(--blue-dark); margin: 12px 0 8px; letter-spacing: -.02em;
+}
+.med-subtitle { font-size: .9rem; color: var(--text-muted); }
+
+.link-blue { color: var(--blue); font-weight: 600; transition: color var(--ease); }
+.link-blue:hover { color: var(--blue-dark); }
+
+.med-form { display: flex; flex-direction: column; gap: 20px; }
+
+/* Champ avec focus bleu */
+.med-form .field-input:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(26,77,181,.15);
+}
+.med-form .field-wrap:focus-within .field-icon { color: var(--blue); }
+.med-form .field-input:hover { border-color: var(--blue-mid); }
+
+/* Toggle type de compte */
+.type-toggle {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+  margin-bottom: 4px;
+}
+.type-option { display: none; }
+.type-label {
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+  padding: 18px 12px; border-radius: var(--radius-sm);
+  border: 2px solid var(--border); background: var(--white);
+  cursor: pointer; transition: all var(--ease); text-align: center;
+}
+.type-label:hover { border-color: var(--blue); background: var(--blue-pale); }
+.type-label i { font-size: 1.5rem; color: var(--text-light); transition: color var(--ease); }
+.type-label span { font-size: .85rem; font-weight: 600; color: var(--text-muted); line-height: 1.3; }
+
+.type-option:checked + .type-label {
+  border-color: var(--blue); background: var(--blue-pale);
+}
+.type-option:checked + .type-label i { color: var(--blue); }
+.type-option:checked + .type-label span { color: var(--blue-dark); }
+
+/* Champ conditionnel */
+.field-conditional { transition: all .3s ease; overflow: hidden; }
+.field-conditional.hidden { max-height: 0; opacity: 0; pointer-events: none; margin: 0; padding: 0; }
+.field-conditional.visible { max-height: 200px; opacity: 1; }
+
+/* Btn bleu */
+.btn-blue {
+  background: var(--blue); color: var(--white);
+  box-shadow: 0 4px 14px rgba(26,77,181,.35);
+}
+.btn-blue:hover { background: var(--blue-dark); }
+
+/* Divider et légal */
+.med-divider {
+  display: flex; align-items: center; gap: 12px;
+  color: var(--text-light); font-size: .8rem; margin: 4px 0;
+}
+.med-divider::before, .med-divider::after {
+  content: ''; flex: 1; height: 1px; background: var(--border);
+}
+.med-legal {
+  margin-top: 22px; font-size: .775rem; color: var(--text-light);
+  text-align: center; line-height: 1.6;
+}
+.med-legal a { color: var(--blue); }
+
+/* ══════════════════════════════════════════════════════════
+   DASHBOARD MÉDECIN — Thème bleu
+══════════════════════════════════════════════════════════ */
+.dash-body { min-height: 100vh; background: var(--off-white); display: flex; flex-direction: column; }
+
+.med-topbar {
+  height: 64px; background: var(--white);
+  border-bottom: 2px solid var(--blue);
+  display: flex; align-items: center;
+  padding: 0 32px; gap: 20px;
+  position: sticky; top: 0; z-index: 100;
+  box-shadow: var(--shadow-sm);
+}
+.med-topbar-logo {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--font-display); font-size: 1.35rem; font-weight: 700;
+  color: var(--blue-dark); text-decoration: none; flex-shrink: 0;
+}
+.med-topbar-logo-icon {
+  width: 36px; height: 36px; background: var(--blue);
+  border-radius: 10px; display: flex; align-items: center; justify-content: center;
+  color: var(--white); font-size: .9rem;
+}
+.med-topbar-sep { flex: 1; }
+
+.med-topbar-badge {
+  display: flex; align-items: center; gap: 10px; padding: 8px 18px;
+  background: var(--blue-pale); border: 1px solid var(--blue-light);
+  border-radius: 100px; font-size: .84rem; font-weight: 600; color: var(--blue-dark);
+}
+.med-topbar-badge i { color: var(--blue); }
+
+.med-topbar-user {
+  display: flex; align-items: center; gap: 10px;
+  font-size: .875rem; color: var(--text-muted);
+}
+.med-topbar-avatar {
+  width: 36px; height: 36px; background: var(--blue);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: .8rem; color: var(--white); flex-shrink: 0;
+}
+.med-logout {
+  display: flex; align-items: center; gap: 7px; padding: 8px 16px;
+  background: none; border: 1.5px solid var(--border); border-radius: var(--radius-sm);
+  font-size: .82rem; font-weight: 600; color: var(--text-muted);
+  transition: all var(--ease); text-decoration: none; cursor: pointer;
+}
+.med-logout:hover { border-color: #dc2626; color: #dc2626; background: #fff5f5; }
+
+/* ── Contenu dashboard ───────────────────────────────────── */
+.med-main {
+  flex: 1; padding: 32px; max-width: 1400px; margin: 0 auto; width: 100%;
+}
+.med-welcome {
+  font-family: var(--font-display); font-size: 1.9rem; font-weight: 700;
+  color: var(--blue-dark); line-height: 1.2;
+}
+.med-date { font-size: .875rem; color: var(--text-muted); margin-top: 4px; }
+
+/* Stats bleu */
+.med-stat-card {
+  background: var(--white); border-radius: var(--radius);
+  border: 1px solid var(--border); padding: 24px 20px;
+  display: flex; flex-direction: column; gap: 10px;
+  box-shadow: var(--shadow-sm); position: relative; overflow: hidden;
+  transition: transform var(--ease), box-shadow var(--ease);
+}
+.med-stat-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.med-stat-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+  background: var(--blue);
+}
+.med-stat-card.s-green::before  { background: var(--green); }
+.med-stat-card.s-orange::before { background: #f59e0b; }
+.med-stat-card.s-red::before    { background: #ef4444; }
+
+.med-stat-icon {
+  width: 42px; height: 42px; border-radius: 10px; background: var(--blue-pale);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; color: var(--blue-dark);
+}
+.med-stat-card.s-green  .med-stat-icon { background: #edfaf3; color: #0a5c36; }
+.med-stat-card.s-orange .med-stat-icon { background: #fffbeb; color: #92400e; }
+.med-stat-card.s-red    .med-stat-icon { background: #fef2f2; color: #991b1b; }
+
+.med-stat-value {
+  font-family: var(--font-display); font-size: 2.4rem; font-weight: 700;
+  color: var(--blue-dark); line-height: 1;
+}
+.med-stat-label {
+  font-size: .78rem; font-weight: 600; color: var(--text-muted);
+  text-transform: uppercase; letter-spacing: .06em;
+}
+
+/* Section dashboard médecin */
+.med-section {
+  background: var(--white); border-radius: var(--radius);
+  border: 1px solid var(--border); box-shadow: var(--shadow-sm); overflow: hidden;
+}
+.med-section-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 22px; border-bottom: 1px solid var(--border);
+}
+.med-section-title {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: var(--blue-dark);
+}
+.med-section-title i { color: var(--blue); }
+
+/* Formulaire création sous-service */
+.ss-form {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 20px 22px;
+}
+.ss-form-full { grid-column: 1/-1; }
+
+.ss-input {
+  width: 100%; height: 46px; padding: 0 14px;
+  border: 1.8px solid var(--border); border-radius: var(--radius-sm);
+  font-family: var(--font-body); font-size: .875rem; color: var(--text-main);
+  outline: none; transition: border-color var(--ease);
+  background: var(--white);
+}
+.ss-input:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(26,77,181,.12); }
+
+.ss-textarea {
+  width: 100%; padding: 10px 14px; height: 72px;
+  border: 1.8px solid var(--border); border-radius: var(--radius-sm);
+  font-family: var(--font-body); font-size: .875rem; color: var(--text-main);
+  outline: none; resize: vertical; transition: border-color var(--ease);
+}
+.ss-textarea:focus { border-color: var(--blue); }
+
+/* Planning */
+.planning-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px; padding: 16px 22px;
+}
+.planning-item {
+  background: var(--blue-pale); border: 1px solid var(--blue-light);
+  border-radius: var(--radius-sm); padding: 14px;
+}
+.planning-jour { font-size: .78rem; font-weight: 700; color: var(--blue-dark); text-transform: uppercase; letter-spacing: .06em; }
+.planning-heure { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--blue); margin: 4px 0; }
+.planning-ss { font-size: .78rem; color: var(--text-muted); }
+
+/* Tableau file médecin */
+.med-file-table { width: 100%; border-collapse: collapse; }
+.med-file-table th {
+  padding: 10px 14px; text-align: left; font-size: .72rem; font-weight: 700;
+  color: var(--text-muted); text-transform: uppercase; letter-spacing: .08em;
+  background: var(--blue-pale); border-bottom: 1px solid var(--blue-light);
+}
+.med-file-table td {
+  padding: 12px 14px; font-size: .875rem; color: var(--text-main);
+  border-bottom: 1px solid var(--border); vertical-align: middle;
+}
+.med-file-table tr:last-child td { border-bottom: none; }
+.med-file-table tr:hover td { background: var(--blue-pale); }
+
+.med-rang {
+  width: 30px; height: 30px; background: var(--blue); color: var(--white);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-size: .8rem; font-weight: 700;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .med-auth-wrapper { flex-direction: column; }
+  .med-brand { width: 100%; min-width: unset; }
+  .med-brand-inner { padding: 32px 28px; flex-direction: row; flex-wrap: wrap; align-items: center; gap: 20px; }
+  .med-logo { margin-bottom: 0; }
+  .med-brand-title { font-size: 1.75rem; }
+  .med-brand-body { flex: 1; min-width: 200px; margin-bottom: 0; }
+  .med-features, .med-brand-deco { display: none; }
+  .med-form-panel { padding: 36px 20px; }
+  .ss-form { grid-template-columns: 1fr; }
+}
+@media (max-width: 520px) {
+  .med-form-inner { max-width: 100%; }
+  .med-title { font-size: 1.7rem; }
+  .type-toggle { grid-template-columns: 1fr; }
+}
